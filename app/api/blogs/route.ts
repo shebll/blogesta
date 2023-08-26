@@ -1,6 +1,6 @@
 import prisma from "@/prisma";
 import { NextResponse } from "next/server";
-
+// connect to database
 export async function connectDb() {
   try{
     await prisma.$connect();
@@ -8,6 +8,7 @@ export async function connectDb() {
     return Error("can ont connect to database");
   }
 }
+// api end point for get all posts "/blogs" GET Method
 export const GET =async (req :Request,res :NextResponse) => {
   try{
     await connectDb();
@@ -19,6 +20,7 @@ export const GET =async (req :Request,res :NextResponse) => {
     await prisma.$disconnect()
   }
 }
+// api end point for create new Post "/blogs" POST Method
 export const POST =async (req :Request,res :NextResponse) => {
   try{
     await connectDb();
